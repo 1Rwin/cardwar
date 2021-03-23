@@ -4,8 +4,8 @@ import com.selfdev.cardwar.domain.card.Card;
 import com.selfdev.cardwar.domain.card.Colour;
 import com.selfdev.cardwar.domain.game.Game;
 import com.selfdev.cardwar.domain.player.Player;
-import com.selfdev.cardwar.repository.CardRepository;
-import com.selfdev.cardwar.repository.GameRepository;
+import com.selfdev.cardwar.repository.card.CardRepository;
+import com.selfdev.cardwar.repository.game.GameRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -21,7 +21,7 @@ public class DataInitializer {
     private final CardRepository cardRepository;
     private final GameRepository gameRepository;
 
-    @EventListener(ContextRefreshedEvent.class)
+//    @EventListener(ContextRefreshedEvent.class)
     public void setUpGame() {
         initCardDeck();
         initGames();
