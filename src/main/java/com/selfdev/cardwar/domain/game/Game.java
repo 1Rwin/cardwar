@@ -15,19 +15,25 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Game {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     //kiedys data
-    @ManyToOne(fetch=FetchType.LAZY,
-    cascade = CascadeType.ALL)
+    
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private Player hostPlayer;
-    @ManyToOne(fetch=FetchType.LAZY,
+    
+    @ManyToOne(fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private Player secondPlayer;
-
-    public Game(Player player_one, Player player_two) {
-        this.hostPlayer = player_one;
-        this.secondPlayer = player_two;
+    
+    @Enumerated(EnumType.ORDINAL)
+    private GameStatus status;
+    
+    public Game(Player playerOne, Player playerTwo) {
+        this.hostPlayer = playerOne;
+        this.secondPlayer = playerTwo;
     }
 }
