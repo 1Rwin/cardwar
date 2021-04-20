@@ -1,15 +1,12 @@
 package com.selfdev.cardwar.infrastructure.game;
 
-import com.selfdev.cardwar.aplication.game.dto.GameCreateRequest;
-import com.selfdev.cardwar.aplication.game.dto.GameCreateResponse;
-import com.selfdev.cardwar.aplication.game.dto.GamesResponse;
+import com.selfdev.cardwar.aplication.game.dto.*;
 import com.selfdev.cardwar.aplication.game.facade.GameFacade;
 import com.selfdev.cardwar.domain.game.GameParameter;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -26,5 +23,11 @@ public class GameEndpoint {
     @GetMapping("/game/findAll")
     public GamesResponse findAll() {
         return gameFacade.findAll();
+    }
+    
+    @PostMapping("/game/{gameId}/join")
+    public GameJoinResponse joinGame(@RequestBody GameJoinRequest request,
+                                     @PathVariable("gameId") UUID gameId) {
+        return gameFacade.joinGame(request, gameId);
     }
 }

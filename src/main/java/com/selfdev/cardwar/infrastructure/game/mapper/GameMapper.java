@@ -1,6 +1,7 @@
 package com.selfdev.cardwar.infrastructure.game.mapper;
 
 import com.selfdev.cardwar.aplication.game.dto.GameCreateResponse;
+import com.selfdev.cardwar.aplication.game.dto.GameJoinResponse;
 import com.selfdev.cardwar.aplication.game.dto.GameResponse;
 import com.selfdev.cardwar.aplication.game.dto.GamesResponse;
 import com.selfdev.cardwar.domain.game.Game;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Component
-public class GameCreateMapper {
+public class GameMapper {
     
     public GameCreateResponse mapToGameCreateResponse(Game game) {
         return GameCreateResponse.builder()
@@ -31,5 +32,14 @@ public class GameCreateMapper {
             gamesList.add(gameResponse);
         }
         return new GamesResponse(gamesList);
+    }
+    
+    public GameJoinResponse mapToGameJoinResponse(Game game) {
+        return GameJoinResponse.builder()
+                .gameId(game.getId())
+                .hostPlayer(game.getHostPlayer())
+                .secondPlayer(game.getSecondPlayer())
+                .status(game.getStatus())
+                .build();
     }
 }
