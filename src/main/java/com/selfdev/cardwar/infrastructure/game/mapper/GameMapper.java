@@ -17,9 +17,10 @@ public class GameMapper {
     public GameCreateResponse mapToGameCreateResponse(Game game) {
         return GameCreateResponse.builder()
                 .gameId(game.getId())
-                .hostPlayer(game.getHostPlayer())
-                .secondPlayer(game.getSecondPlayer())
+                .hostPlayer(game.getHostPlayer().getName())
+                .secondPlayer("slot for second player")
                 .status(game.getStatus())
+                .creationGameDate(game.getDateTime())
                 .build();
     }
     

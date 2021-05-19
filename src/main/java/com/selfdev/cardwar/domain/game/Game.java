@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
@@ -19,7 +20,8 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    //kiedys data
+    
+    private LocalDateTime dateTime;
     
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
@@ -35,5 +37,10 @@ public class Game {
     public Game(Player playerOne, Player playerTwo) {
         this.hostPlayer = playerOne;
         this.secondPlayer = playerTwo;
+    }
+    
+    @PrePersist
+    private void setCreationDateTime() {
+        this.dateTime = LocalDateTime.now();
     }
 }
