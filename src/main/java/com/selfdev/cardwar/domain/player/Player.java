@@ -1,6 +1,5 @@
 package com.selfdev.cardwar.domain.player;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +16,6 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Player {
     
     @Id

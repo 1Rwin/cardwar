@@ -37,8 +37,8 @@ public class GameMapper {
     public GameJoinResponse mapToGameJoinResponse(Game game) {
         return GameJoinResponse.builder()
                 .gameId(game.getId())
-                .hostPlayer(game.getHostPlayer())
-                .secondPlayer(game.getSecondPlayer())
+                .hostPlayer(game.getHostPlayer().getName())
+                .secondPlayer(game.getSecondPlayer().getName())
                 .status(game.getStatus())
                 .build();
     }
